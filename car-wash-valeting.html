@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A&D Car Care - Car Wash & Valeting</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+  <meta name="description" content="Professional exterior car washing, interior cleaning and full valeting in Farnham from A and D Car Care.">
+  <title>A &amp; D Car Care | Car Wash and Valeting in Farnham</title>
+  <link rel="stylesheet" href="./styles.css?v=4">
+  <script defer src="./script.js?v=4"></script>
 </head>
-<body>
-  <header class="header">
+
+<body class="home-page service-page">
+  <header class="header site-header">
     <div class="container navbar">
-      <a href="index.html" class="logo">
-        A&D
-        <div class="logo-icons">
-          <i class="fa-solid fa-gear"></i>
-          <i class="fa-solid fa-wrench red-icon"></i>
-          <i class="fa-solid fa-car-wash"></i>
-        </div>
-        <br>
-        <span>Car Care</span>
+      <a href="index.html" class="logo brand-logo" aria-label="A and D Car Care home">
+        <span class="brand-mark">A&amp;D</span>
+        <span class="brand-name">Car Care</span>
       </a>
+
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
-      <nav id="primary-navigation">
+
+      <nav id="primary-navigation" aria-label="Primary navigation">
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link">Home</a></li>
-          <li class="dropdown">
-            <a href="car-wash-valeting.html" class="nav-link active">Car Wash & Valeting <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
-            <div class="dropdown-menu">
-              <a href="car-wash-valeting.html">Hand Car Wash</a>
-              <a href="car-wash-valeting.html">Full Valet</a>
-              <a href="car-wash-valeting.html">Paint Protection</a>
-            </div>
-          </li>
+          <li><a href="car-wash-valeting.html" class="nav-link active" aria-current="page">Car Wash &amp; Valeting</a></li>
           <li><a href="about-us.html#about-section" class="nav-link">About Us</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
@@ -41,105 +35,191 @@
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-overlay-shape"></div>
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Car Wash & Valeting
-          <span class="highlight-red">Clean, careful, and fully hand-finished</span>
-        </h1>
-        <div class="hero-buttons">
-          <a href="contact.html" class="btn-outline">Book a Valet</a>
-        </div>
-        <div class="rating-badge">
-          <div class="rating-item"><i class="fa-solid fa-star"></i><span><strong>4.5 / 5 Stars</strong> on Google Reviews</span></div>
-          <span>|</span>
-          <div class="rating-item"><i class="fa-solid fa-star"></i><span><strong>4.8 / 5</strong> on Facebook</span></div>
+  <main>
+    <section class="service-hero" aria-labelledby="service-hero-heading">
+      <div class="container service-hero-content">
+        <p class="hero-eyebrow">Car wash and valeting in Farnham</p>
+        <h1 id="service-hero-heading">Car Wash &amp; Valeting</h1>
+        <p>Professional exterior and interior cleaning, with careful hand-finished work to keep your car looking its best.</p>
+        <div class="hero-actions">
+          <a href="contact.html" class="home-button home-button-primary">Book your wash</a>
+          <a href="#services" class="home-button home-button-secondary">View services</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="services-gateway">
-    <div class="container">
-      <h2 class="section-title">Valeting Services</h2>
-      <div class="gateway-card">
-        <div class="gateway-info">
-          <div>
-            <div class="gateway-icon"><i class="fa-solid fa-shower"></i></div>
-            <h3>Hand Car Wash</h3>
-            <p>Exterior wash, wheel clean, hand dry, and a polished finish.</p>
+    <section class="service-intro" aria-labelledby="intro-heading">
+      <div class="container service-intro-grid">
+        <p class="section-kicker">A considered clean</p>
+        <div>
+          <h2 id="intro-heading">A clean that feels as good as it looks.</h2>
+          <p>Whether you need a quick exterior wash or a more thorough interior and exterior clean, our team takes a practical, detail-led approach to every vehicle.</p>
+          <p>We use professional equipment and quality products to deliver a fresh, well-cared-for finish without making the process complicated.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-services service-offerings" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-heading home-section-heading">
+          <p class="section-kicker">Our services</p>
+          <h2 id="services-heading">The right level of care for your car.</h2>
+          <p>Choose from the services currently available at A and D Car Care. Contact us to discuss the best option for your vehicle.</p>
+        </div>
+
+        <div class="service-grid service-grid-five">
+          <article class="service-card">
+            <span class="service-index">01</span>
+            <span class="service-icon" aria-hidden="true">&#10022;</span>
+            <h3>Exterior wash</h3>
+            <p>A careful hand wash to refresh the outside of your car and leave it looking clean and presentable.</p>
+            <a href="contact.html" class="service-link">Book this service <b aria-hidden="true">&#8594;</b></a>
+          </article>
+          <article class="service-card service-card-featured">
+            <span class="service-index">02</span>
+            <span class="service-icon" aria-hidden="true">&#9678;</span>
+            <h3>Interior cleaning</h3>
+            <p>Focused cleaning for the areas you use most, helping the cabin feel fresher and more comfortable.</p>
+            <a href="contact.html" class="service-link">Book this service <b aria-hidden="true">&#8594;</b></a>
+          </article>
+          <article class="service-card">
+            <span class="service-index">03</span>
+            <span class="service-icon" aria-hidden="true">&#10003;</span>
+            <h3>Full valet</h3>
+            <p>A more complete inside-and-out service when your car needs thorough attention from top to bottom.</p>
+            <a href="contact.html" class="service-link">Book this service <b aria-hidden="true">&#8594;</b></a>
+          </article>
+          <article class="service-card">
+            <span class="service-index">04</span>
+            <span class="service-icon" aria-hidden="true">&#10070;</span>
+            <h3>Paint protection</h3>
+            <p>Protective care to help maintain a clean, glossy finish and support the condition of your paintwork.</p>
+            <a href="contact.html" class="service-link">Book this service <b aria-hidden="true">&#8594;</b></a>
+          </article>
+          <article class="service-card">
+            <span class="service-index">05</span>
+            <span class="service-icon" aria-hidden="true">&#10033;</span>
+            <h3>Deep interior clean</h3>
+            <p>A deeper clean for the interior when it needs more than a standard refresh.</p>
+            <a href="contact.html" class="service-link">Book this service <b aria-hidden="true">&#8594;</b></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-heading process-heading">
+          <p class="section-kicker">How it works</p>
+          <h2 id="process-heading">Straightforward care from first contact to a fresh finish.</h2>
+        </div>
+        <ol class="process-list">
+          <li>
+            <span>01</span>
+            <h3>Choose your service</h3>
+            <p>Pick the wash or valeting option that suits your car.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Book or contact us</h3>
+            <p>Call or WhatsApp the team to discuss your visit.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>We clean your vehicle</h3>
+            <p>Our team gets to work with care and attention to detail.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <h3>Drive away refreshed</h3>
+            <p>Leave with a cleaner car that is ready for the road again.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="care-gallery" aria-labelledby="gallery-heading">
+      <div class="container care-gallery-grid">
+        <div class="care-gallery-copy">
+          <p class="section-kicker">Care in action</p>
+          <h2 id="gallery-heading">The difference is in the detail.</h2>
+          <p>From the first rinse to the finishing touches, our team focuses on the close, careful work that gives every wash and valet its clean final result.</p>
+          <a href="contact.html" class="text-link">Talk to our team about your car <span aria-hidden="true">&#8594;</span></a>
+        </div>
+        <figure class="care-gallery-image">
+          <img src="Before and after.jpg" loading="lazy" alt="A member of the A and D Car Care team hand washing a vehicle">
+          <figcaption>Professional hand washing at A and D Car Care.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="booking-section service-booking" aria-labelledby="booking-heading">
+      <div class="container booking-inner">
+        <div>
+          <p class="section-kicker">Book your visit</p>
+          <h2 id="booking-heading">Ready to give your car some proper care?</h2>
+          <p>Call or send a WhatsApp message and the team will be happy to help.</p>
+        </div>
+        <div class="booking-actions">
+          <a href="tel:+447535508566" class="home-button home-button-light">Call us</a>
+          <a href="https://wa.me/447535508566?text=Hi%2C%20I%20would%20like%20to%20book%20a%20car%20wash%20or%20valeting%20service." class="home-button home-button-dark" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-reviews service-location" aria-labelledby="location-heading">
+      <div class="container location-grid service-location-grid">
+        <div class="location-copy">
+          <p class="section-kicker">Location and Google</p>
+          <h2 id="location-heading">Find us in Farnham.</h2>
+          <p>Unit 11/12, Guildford Road Trading Estate, Farnham, Surrey, GU9 9PZ.</p>
+          <a href="tel:+447535508566" class="location-phone">+44 7535 508566</a>
+          <div class="location-actions">
+            <a href="https://share.google/BwVbmJkmmhpI0sBHX" class="home-button home-button-primary" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+            <a href="https://share.google/BwVbmJkmmhpI0sBHX" class="home-button home-button-secondary" target="_blank" rel="noopener noreferrer">View Google reviews</a>
           </div>
-          <a href="contact.html" class="btn-card">View Wash Menu</a>
         </div>
-        <div class="gateway-info">
-          <div>
-            <div class="gateway-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
-            <h3>Full Valet</h3>
-            <p>Interior vacuuming, deep clean, glass, trims, and finishing touches.</p>
-          </div>
-          <a href="contact.html" class="btn-card">View Valet Menu</a>
+        <div class="map-frame">
+          <iframe title="Map showing A and D Car Care in Farnham" src="https://www.google.com/maps?q=A%26D%20Car%20Care%2C%20Unit%2011%2F12%20Guildford%20Road%20Trading%20Estate%2C%20Farnham%20GU9%209PZ&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="pricing-section">
-    <div class="container">
-      <h2 class="section-title">Pricing Table</h2>
-      <div class="pricing-table-wrapper">
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Exterior Wash</td><td>£20</td></tr>
-            <tr><td>Exterior and Interior Wash</td><td>£45</td></tr>
-            <tr><td>Full Interior Wash</td><td>£60</td></tr>
-            <tr><td>Paint Protection</td><td>£90</td></tr>
-            <tr><td>Interior Deep Clean</td><td>£120</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
+  <footer class="footer home-footer">
     <div class="container">
       <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="footer-logo">A&amp;D <span>Car Care</span></a>
+          <p>Professional car washing and valeting in Farnham.</p>
+        </div>
         <div class="footer-col">
-          <h4>Home</h4>
+          <h2>Explore</h2>
           <ul>
-            <li><a href="car-wash-valeting.html">Car Wash & Valeting</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="car-wash-valeting.html">Car Wash &amp; Valeting</a></li>
             <li><a href="about-us.html#about-section">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
+          <h2>Contact</h2>
           <ul>
-            <li><a href="car-wash-valeting.html">Car Wash</a></li>
-            <li><a href="car-wash-valeting.html">Full Valet</a></li>
+            <li><a href="tel:+447535508566">+44 7535 508566</a></li>
+            <li><a href="https://wa.me/447535508566?text=Hi%2C%20I%20would%20like%20to%20book%20a%20car%20wash%20or%20valeting%20service." target="_blank" rel="noopener noreferrer">WhatsApp us</a></li>
+            <li><a href="contact.html">Contact page</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li>Guildford Rd, Farnham</li>
-            <li>GU9 9PZ</li>
-            <li>+44 7535 508566</li>
-          </ul>
+          <h2>Find us</h2>
+          <address>Unit 11/12, Guildford Road<br>Trading Estate, Farnham<br>Surrey, GU9 9PZ</address>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 A&D Car Care. All rights reserved.</p>
-        <p>Designed for Auto Care Excellence</p>
+        <p>&copy; 2026 A &amp; D Car Care. All rights reserved.</p>
+        <a href="https://share.google/BwVbmJkmmhpI0sBHX" target="_blank" rel="noopener noreferrer">Find us on Google Maps</a>
       </div>
     </div>
   </footer>
 </body>
+
 </html>
