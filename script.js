@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const consentStorageKey = "ad-car-care-cookie-consent";
+  const consentStorageKey = "ad-car-wash-cookie-consent";
   const menuToggle = document.querySelector(".menu-toggle");
   const body = document.body;
   const navigation = document.querySelector("#primary-navigation");

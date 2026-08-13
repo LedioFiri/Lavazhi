@@ -116,10 +116,6 @@
       font-size: 10px;
   }
 
-  .logo-icons i.red-icon {
-      background: var(--primary-red);
-  }
-
   .nav-menu {
       display: flex;
       align-items: center;
@@ -2406,8 +2402,8 @@
       background: var(--home-sand);
   }
 
-  .service-grid-five {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+  .service-grid-four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .service-page .service-card {
@@ -2569,8 +2565,8 @@
   }
 
   @media (max-width: 1120px) {
-      .service-grid-five {
-          grid-template-columns: repeat(3, 1fr);
+      .service-grid-four {
+          grid-template-columns: repeat(2, 1fr);
       }
   }
 
@@ -2629,7 +2625,7 @@
           padding-top: 70px;
       }
 
-      .service-grid-five {
+      .service-grid-four {
           grid-template-columns: 1fr;
       }
 
