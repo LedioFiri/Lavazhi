@@ -1,133 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const consentStorageKey = "ad-car-wash-cookie-consent";
-  const menuToggle = document.querySelector(".menu-toggle");
+  const consentKey = "ad-car-wash-cookie-consent";
   const body = document.body;
+  const toggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector("#primary-navigation");
-  const navLinks = document.querySelectorAll(".nav-menu a");
-
-  const getConsent = () => {
-    try {
-      return localStorage.getItem(consentStorageKey);
-    } catch {
-      return null;
-    }
-  };
-
-  const saveConsent = (choice) => {
-    try {
-      localStorage.setItem(consentStorageKey, choice);
-    } catch {
-      // The banner still closes when storage is unavailable.
-    }
-  };
-
-  const enableAnalytics = () => {
-    const measurementId = document.documentElement.dataset.googleAnalyticsId;
-
-    // No ID is configured in this project, so analytics remains inactive.
-    if (!measurementId || document.querySelector("script[data-consent-analytics]")) {
-      return;
-    }
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function gtag() {
-      window.dataLayer.push(arguments);
-    };
-    window.gtag("js", new Date());
-    window.gtag("config", measurementId);
-
-    const analyticsScript = document.createElement("script");
-    analyticsScript.async = true;
-    analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
-    analyticsScript.dataset.consentAnalytics = "true";
-    document.head.append(analyticsScript);
-  };
-
-  const createCookieConsent = () => {
-    if (getConsent()) {
-      if (getConsent() === "accepted") {
-        enableAnalytics();
-      }
-      return;
-    }
-
-    const banner = document.createElement("section");
-    banner.className = "cookie-consent";
-    banner.setAttribute("aria-label", "Cookie consent");
-    banner.setAttribute("role", "region");
-
-    const message = document.createElement("p");
-    message.textContent = "We use essential cookies to keep this website working and optional analytics cookies to understand how visitors use it.";
-
-    const actions = document.createElement("div");
-    actions.className = "cookie-consent-actions";
-
-    const acceptButton = document.createElement("button");
-    acceptButton.type = "button";
-    acceptButton.className = "cookie-consent-accept";
-    acceptButton.textContent = "Accept All";
-
-    const rejectButton = document.createElement("button");
-    rejectButton.type = "button";
-    rejectButton.className = "cookie-consent-reject";
-    rejectButton.textContent = "Reject";
-
-    const makeChoice = (choice) => {
-      saveConsent(choice);
-      if (choice === "accepted") {
-        enableAnalytics();
-      }
-      banner.remove();
-    };
-
-    acceptButton.addEventListener("click", () => makeChoice("accepted"));
-    rejectButton.addEventListener("click", () => makeChoice("rejected"));
-
-    actions.append(acceptButton, rejectButton);
-    banner.append(message, actions);
-    document.body.append(banner);
-  };
-
-  createCookieConsent();
-
   const closeMenu = () => {
     body.classList.remove("menu-open");
-    if (menuToggle) {
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open menu");
-    }
+    if (toggle) { toggle.setAttribute("aria-expanded", "false"); toggle.setAttribute("aria-label", "Open menu"); }
   };
-
-  if (menuToggle) {
-    menuToggle.addEventListener("click", () => {
-      const isOpen = body.classList.toggle("menu-open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-    });
-  }
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (body.classList.contains("menu-open")) {
-        closeMenu();
-      }
-    });
+  if (toggle) toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const open = body.classList.toggle("menu-open");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
-
+  document.querySelectorAll(".nav-menu a").forEach((link) => link.addEventListener("click", closeMenu));
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && body.classList.contains("menu-open")) {
-      closeMenu();
-      menuToggle?.focus();
-    }
+    if (event.key === "Escape" && body.classList.contains("menu-open")) { closeMenu(); toggle?.focus(); }
   });
-
   document.addEventListener("click", (event) => {
-    if (
-      body.classList.contains("menu-open") &&
-      !menuToggle?.contains(event.target) &&
-      !navigation?.contains(event.target)
-    ) {
-      closeMenu();
-    }
+    if (body.classList.contains("menu-open") && !toggle?.contains(event.target) && !navigation?.contains(event.target)) closeMenu();
   });
+  const getConsent = () => { try { return localStorage.getItem(consentKey); } catch { return null; } };
+  const saveConsent = (choice) => { try { localStorage.setItem(consentKey, choice); } catch { /* Banner still closes. */ } };
+  const loadAnalytics = () => {
+    const id = document.documentElement.dataset.googleAnalyticsId;
+    if (!id || document.querySelector("[data-consent-analytics]")) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", id);
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+    script.dataset.consentAnalytics = "true";
+    document.head.append(script);
+  };
+  if (getConsent() === "accepted") { loadAnalytics(); return; }
+  if (getConsent()) return;
+  const banner = document.createElement("section");
+  banner.className = "cookie-consent";
+  banner.setAttribute("aria-label", "Cookie choices");
+  banner.setAttribute("role", "region");
+  banner.innerHTML = '<p>We use essential storage to remember this choice. Optional analytics help us understand site use. Read our <a href="privacy-policy.html">Privacy Policy</a>.</p><div class="cookie-consent-actions"><button class="accept" type="button">Accept all</button><button class="reject" type="button">Reject optional</button></div>';
+  const choose = (choice) => { saveConsent(choice); if (choice === "accepted") loadAnalytics(); banner.remove(); };
+  banner.querySelector(".accept").addEventListener("click", () => choose("accepted"));
+  banner.querySelector(".reject").addEventListener("click", () => choose("rejected"));
+  body.append(banner);
 });
